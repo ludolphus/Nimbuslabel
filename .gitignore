@@ -1,0 +1,7 @@
+tmp
+bin
+build
+.settings
+Nimbuslabel.xcodeproj
+*.pch
+

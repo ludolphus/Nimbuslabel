@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: Attributed label based on Nimbuskit NimbusAttributedLabel
+author: Steven van Loef
+license: Apache License, Version 2.0
+copyright: Copyright (c) 2014 by Steven van Loef (@ludolphus)
+
+
+# these should not be edited
+name: Nimbuslabel
+moduleid: nimbus.label
+guid: efe922fb-6f3a-4b99-81d0-4f4560029940
+platform: iphone
+minsdk: 3.2.0.GA
