@@ -19,7 +19,7 @@ Example:
 
 ```
 <modules>
-	<module version="1.0.0">com.fleksy</module>
+	<module version="1.0.0">nimbus.label</module>
 </modules>
 ```
 
