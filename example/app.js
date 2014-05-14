@@ -8,6 +8,7 @@ win.open();
 var text = '@ludolphus hello world emoji 😄 and #tagafteremoji other stuff € http://chimp.li/ work. And emoji on last line 😄😄😄😄😄';
 var attr = [];
 attr.push({type: 'font', value: {fontFamily: 'Times', fontSize: 10}, start: 0, length: text.length});
+attr.push({type: 'color', value: '#ff0000', start: 0, length: text.length});
 attr.push({type: 'link', value: 'mention://ludolphus', start: 0, length: 10});
 attr.push({type: 'link', value: '#tagafteremoji', start: 36, length: 14});
 attr.push({type: 'link', value: 'http://chimp.li/', start: 65, length: 16});
