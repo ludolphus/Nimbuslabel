@@ -23,7 +23,7 @@
 // The following is to support the new layout in TiSDK
 -(CGFloat)contentHeightForWidth:(CGFloat)value
 {
-    float height = [((NimbusLabelLabel*)[self view]) currentContentHeight];
+    float height = [((NimbusLabelLabel*)[self view]) currentContentHeight:value];
     if (height > 1) {
         return height;
     }

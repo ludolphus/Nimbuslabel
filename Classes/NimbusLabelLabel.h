@@ -16,6 +16,6 @@
 }
 
 -(void)createView;
--(float)currentContentHeight;
+-(float)currentContentHeight:(CGFloat) width;
 
 @end

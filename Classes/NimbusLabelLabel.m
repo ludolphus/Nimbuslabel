@@ -51,6 +51,22 @@
     [self label];
 }
 
+-(CGFloat)contentWidthForWidth:(CGFloat)suggestedWidth
+{
+    /*
+     Why both? sizeThatFits returns the width with line break mode tail truncation and we like to
+     have atleast enough space to display one word. On the otherhand font measurement is unsuitable for
+     attributed strings till we move to the new measurement API. Hence take both and return MAX.
+     */
+    CGFloat sizeThatFitsResult = [[self label] sizeThatFits:CGSizeMake(suggestedWidth, 0)].width;
+	return sizeThatFitsResult;
+}
+
+-(CGFloat)contentHeightForWidth:(CGFloat)width
+{
+	return [[self label] sizeThatFits:CGSizeMake(width, 0)].height;
+}
+
 -(CGRect)padLabel
 {
     CGSize textSize = [[self label] sizeThatFits:CGSizeMake(initialLabelFrame.size.width, CGFLOAT_MAX)];
@@ -84,9 +100,9 @@
 	return value;
 }
 
--(float)currentContentHeight
+-(float)currentContentHeight:(CGFloat) width
 {
-    return _contentHeight;
+	return [[self label] sizeThatFits:CGSizeMake(width, 0)].height;
 }
 
 -(void)setAttributedText_:(id)object
@@ -123,6 +139,11 @@
 
     [self padLabel];
     [(TiViewProxy *)[self proxy] contentsWillChange];
+}
+
+-(void)setTextColor_:(id)color
+{
+    [[self label] setTextColor:[[TiUtils colorValue: color] color]];
 }
 
 -(void)setLinkColor_:(id)color
