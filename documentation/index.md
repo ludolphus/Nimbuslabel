@@ -2,7 +2,7 @@
 
 ## Description
 
-This module uses the attributed label code as available in Nimbuskit. It supports click and longpress events on attributes.
+This module uses the attributed label code as available in Nimbuskit. It supports singletap and tapandhold events on attributes.
 
 ## Accessing the Nimbuslabel Module
 

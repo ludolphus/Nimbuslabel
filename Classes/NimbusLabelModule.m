@@ -69,4 +69,10 @@
 #pragma Public APIs
 
 
+MAKE_SYSTEM_PROP(TextAlignmentLeft, NSTextAlignmentLeft);
+MAKE_SYSTEM_PROP(TextAlignmentCenter, NSTextAlignmentCenter);
+MAKE_SYSTEM_PROP(TextAlignmentRight, NSTextAlignmentRight);
+MAKE_SYSTEM_PROP(TextAlignmentJustified, NSTextAlignmentJustified);
+MAKE_SYSTEM_PROP(TextAlignmentNatural, NSTextAlignmentNatural);
+
 @end

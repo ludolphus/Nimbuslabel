@@ -977,15 +977,15 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
   self.touchPoint = point;
   self.originalLink = self.touchedLink;
 
-  if (self.originalLink) {
+//  if (self.originalLink) {
     [self.longPressTimer invalidate];
-    if (nil != self.touchedLink) {
+//    if (nil != self.touchedLink) {
       self.longPressTimer = [NSTimer scheduledTimerWithTimeInterval:kLongPressTimeInterval target:self selector:@selector(_longPressTimerDidFire:) userInfo:nil repeats:NO];
-    }
+//    }
 
-  } else {
-    [super touchesBegan:touches withEvent:event];
-  }
+//  } else {
+//    [super touchesBegan:touches withEvent:event];
+//  }
 
   [self setNeedsDisplay];
 }
@@ -1034,6 +1034,34 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+	[self.longPressTimer invalidate];
+	self.longPressTimer = nil;
+	if (self.originalLink) {
+		[self.longPressTimer invalidate];
+		self.longPressTimer = nil;
+		
+		UITouch* touch = [touches anyObject];
+		CGPoint point = [touch locationInView:self];
+		
+		if (nil != self.originalLink) {
+			if ([self isPoint:point nearLink:self.originalLink]
+				&& [self.delegate respondsToSelector:@selector(attributedLabel:didSelectTextCheckingResult:atPoint:)]) {
+				[self.delegate attributedLabel:self didSelectTextCheckingResult:self.originalLink atPoint:point];
+			}
+		}
+		
+		self.touchedLink = nil;
+		self.originalLink = nil;
+		[self setNeedsDisplay];
+		
+	} else {
+		[super touchesEnded:touches withEvent:event];
+	}
+}
+
+/*
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   if (self.originalLink) {
     [self.longPressTimer invalidate];
     self.longPressTimer = nil;
@@ -1057,13 +1085,15 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
     [self setNeedsDisplay];
 
   } else {
+	[self.longPressTimer invalidate];
+	self.longPressTimer = nil;
     UITouch* touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     [self.delegate attributedLabel:self didSelectTextCheckingResult:nil atPoint:point];
     [super touchesEnded:touches withEvent:event];
   }
 }
-
+*/
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
   [super touchesCancelled:touches withEvent:event];
 
@@ -1123,7 +1153,6 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
 
 - (void)_longPressTimerDidFire:(NSTimer *)timer {
   self.longPressTimer = nil;
-
   if (nil != self.touchedLink) {
     self.actionSheetLink = self.touchedLink;
 
@@ -1146,6 +1175,16 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
       self.actionSheetLink = nil;
     }
   }
+
+  else {
+    if ([self.delegate respondsToSelector:@selector(attributedLabel:shouldPresentActionSheet:withTextCheckingResult:atPoint:)]) {
+      // Give the delegate the opportunity to not show the action sheet or to present their own.
+		NSTextCheckingResult *nothing = nil;
+		UIActionSheet* actionSheet = [self actionSheetForResult:self.actionSheetLink];
+		BOOL shouldPresent = [self.delegate attributedLabel:self shouldPresentActionSheet:actionSheet withTextCheckingResult: nothing atPoint:self.touchPoint];
+    }
+  }
+
 }
 
 - (void)_applyLinkStyleWithResults:(NSArray *)results toAttributedString:(NSMutableAttributedString *)attributedString {

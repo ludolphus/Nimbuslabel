@@ -16,6 +16,7 @@ attr.push({type: 'link', value: 'http://chimp.li/', start: 65, length: 16});
 var l = nimbuslabel.createLabel({
 	linkColor: '#ff8400',
 	highlightedLinkBackgroundColor: '#007bff',
+	numberOfLines: 2,
 	attributedText: {text: text, attributes: attr},
 	top:20,
 	left:10,
