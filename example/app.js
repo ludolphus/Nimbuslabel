@@ -26,11 +26,11 @@ var l = nimbuslabel.createLabel({
 	touchEnable: true,
 });
 
-l.addEventListener('click', function(e) {
+l.addEventListener('singletap', function(e) {
 	Ti.API.log(e);
 });
 
-l.addEventListener('longpress', function(e) {
+l.addEventListener('tapandhold', function(e) {
 	Ti.API.log(e);
 });
 
