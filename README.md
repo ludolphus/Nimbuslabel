@@ -1,7 +1,7 @@
 Nimbuslabel module for Appcelerator
 ===========================================
 
-This module uses the attributed label code as available in Nimbuskit. It supports click and longpress events on attributes.
+This module uses the attributed label code as available in Nimbuskit. It supports singletouch and tapandhold events on attributes.
 
 
 BUILD MODULE
@@ -29,7 +29,7 @@ dependencies and copy appropriate image assets into the application.
 USING YOUR MODULE IN CODE
 -------------------------
 
-To use the module in code, all you will need to do is require it. 
+To use the module in code, all you will need to do is require it.
 
 ```
 var nimbuslabel = require('nimbus.label');

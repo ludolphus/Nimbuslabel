@@ -26,7 +26,7 @@ var l = nimbuslabel.createLabel({
 	touchEnable: true,
 });
 
-l.addEventListener('singletap', function(e) {
+l.addEventListener('singletouch', function(e) {
 	Ti.API.log(e);
 });
 

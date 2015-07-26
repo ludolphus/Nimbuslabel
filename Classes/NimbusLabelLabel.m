@@ -191,11 +191,11 @@
 
 // this is a user tap on a link, fireEvent 'click' back to appcelerator
 - (void)attributedLabel:(NIAttributedLabel*)attributedLabel didSelectTextCheckingResult:(NSTextCheckingResult *)result atPoint:(CGPoint)point {
-    [self.proxy fireEvent:@"singletap" withObject:@{
+    [self.proxy fireEvent:@"singletouch" withObject:@{
         @"url": result != nil && [result.URL absoluteString] != nil ? [[result.URL absoluteString] stringByRemovingPercentEncoding] : @"",
         @"x": [NSNumber numberWithFloat:point.x],
         @"y": [NSNumber numberWithFloat:point.y],
-    } propagate:YES];
+    } propagate:NO];
 }
 
 // this is esentially a long press on a link, fireEvent 'longpress' back to appcelerator

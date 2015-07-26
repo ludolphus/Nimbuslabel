@@ -1037,7 +1037,7 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
 	
 	[self.longPressTimer invalidate];
 	self.longPressTimer = nil;
-	if (self.originalLink) {
+//	if (self.originalLink) {
 		[self.longPressTimer invalidate];
 		self.longPressTimer = nil;
 		
@@ -1048,16 +1048,20 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
 			if ([self isPoint:point nearLink:self.originalLink]
 				&& [self.delegate respondsToSelector:@selector(attributedLabel:didSelectTextCheckingResult:atPoint:)]) {
 				[self.delegate attributedLabel:self didSelectTextCheckingResult:self.originalLink atPoint:point];
+			} else  {
+				[self.delegate attributedLabel:self didSelectTextCheckingResult:nil atPoint:point];
 			}
+		} else {
+			[self.delegate attributedLabel:self didSelectTextCheckingResult:nil atPoint:point];
 		}
 		
 		self.touchedLink = nil;
 		self.originalLink = nil;
 		[self setNeedsDisplay];
 		
-	} else {
-		[super touchesEnded:touches withEvent:event];
-	}
+//	} else {
+//		[super touchesEnded:touches withEvent:event];
+//	}
 }
 
 /*
