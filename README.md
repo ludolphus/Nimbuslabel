@@ -35,4 +35,10 @@ To use the module in code, all you will need to do is require it.
 var nimbuslabel = require('nimbus.label');
 ```
 
+USING YOUR MODULE IN ALLOY
+--------------------------
+
+```
+<Label ns="NimbusLabel"  bindId="text"/>
+```
 See example app.js for details.
