@@ -2,13 +2,13 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0.6
+version: 1.0.7
 apiversion: 2
 architectures: armv7 arm64 i386 x86_64
 description: Attributed label based on Nimbuskit NimbusAttributedLabel
 author: Steven van Loef
 license: Apache License, Version 2.0
-copyright: Copyright (c) 2014 by Steven van Loef (@ludolphus)
+copyright: Copyright (c) 2014-2015 by Steven van Loef (@ludolphus)
 
 
 # these should not be edited

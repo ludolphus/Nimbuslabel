@@ -1,3 +1,5 @@
+1.0.7 - Added support for iOS 9 San Francisco font
+1.0.6 - Changed singletap to singletouch
 1.0.5 - Added support for 64-bit
 1.0.2 - Added numberOfLines property
 1.0.1 - fixed label height calculation

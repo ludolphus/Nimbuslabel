@@ -7,6 +7,9 @@ win.open();
 
 var text = '@ludolphus hello world emoji 😄 and #tagafteremoji other stuff € http://chimp.li/ work. And emoji on last line 😄😄😄😄😄';
 var attr = [];
+/*
+	to use the iOS 9 San Francisco font use one of these as fontFamily: 'SF', 'SFmedium', 'SFbold', 'SFlight', 'SFthin'
+*/
 attr.push({type: 'font', value: {fontFamily: 'Times', fontSize: 10}, start: 0, length: text.length});
 attr.push({type: 'color', value: '#ff0000', start: 0, length: text.length});
 attr.push({type: 'link', value: 'mention://ludolphus', start: 0, length: 10});

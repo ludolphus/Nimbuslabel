@@ -128,6 +128,7 @@
 
 			NSDictionary *fontDict = [object objectForKey:@"value"];
 			id familyObject = [fontDict objectForKey:@"fontFamily"];
+			NSString *fontName = [fontDict objectForKey:@"fontFamily"];
 			id sizeObject = [fontDict objectForKey:@"fontSize"];
 			if([sizeObject isKindOfClass:[NSString class]]){
 				sizeObject = [sizeObject lowercaseString];
@@ -135,7 +136,20 @@
 					sizeObject = [sizeObject substringToIndex:[sizeObject length]-2];
 				}
 			}
-			UIFont *font = [UIFont fontWithName: familyObject size: [sizeObject floatValue]];
+			UIFont *font;
+			if ([fontName isEqualToString: @"SF"]) {
+				font = [UIFont systemFontOfSize:[sizeObject floatValue]];
+			} else if ([fontName isEqualToString: @"SFmedium"]) {
+				font = [UIFont systemFontOfSize:[sizeObject floatValue] weight:UIFontWeightMedium];
+			} else if ([fontName isEqualToString: @"SFbold"]) {
+				font = [UIFont systemFontOfSize:[sizeObject floatValue] weight:UIFontWeightBold];
+			} else if ([fontName isEqualToString: @"SFlight"]) {
+				font = [UIFont systemFontOfSize:[sizeObject floatValue] weight:UIFontWeightLight];
+			} else if ([fontName isEqualToString: @"SFthin"]) {
+				font = [UIFont systemFontOfSize:[sizeObject floatValue] weight:UIFontWeightThin];
+			} else {
+				font = [UIFont fontWithName: familyObject size: [sizeObject floatValue]];
+			}
             int start = [TiUtils intValue:[object objectForKey:@"start"]] ;
             int length = [TiUtils intValue:[object objectForKey:@"length"]] ;
             [textString setFont:font range:NSMakeRange(start,length)];
