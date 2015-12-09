@@ -39,6 +39,11 @@ USING YOUR MODULE IN ALLOY
 --------------------------
 
 ```
+<Label module="nimbus.label"  id="label"/>
+```
+
+When using the module inside a ListView
+```
 <Label ns="NimbusLabel"  bindId="text"/>
 ```
 See example app.js for details.
